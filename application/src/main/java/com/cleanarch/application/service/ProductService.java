@@ -8,6 +8,7 @@ import com.cleanarch.domain.port.output.ProductEventPublisher;
 import com.cleanarch.domain.port.output.ProductRepository;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,7 +25,17 @@ public class ProductService implements ProductUseCase {
     @Override
     public Product createProduct(Product product) {
         if (!product.isValid()) {
-            throw new InvalidProductException("Product data is invalid");
+            StringBuilder errors = new StringBuilder("Product validation failed: ");
+            if (product.getName() == null || product.getName().trim().isEmpty()) {
+                errors.append("name is required; ");
+            }
+            if (product.getPrice() == null || product.getPrice().compareTo(BigDecimal.ZERO) < 0) {
+                errors.append("price must be non-negative; ");
+            }
+            if (product.getQuantity() == null || product.getQuantity() < 0) {
+                errors.append("quantity must be non-negative; ");
+            }
+            throw new InvalidProductException(errors.toString());
         }
         
         product.setCreatedAt(LocalDateTime.now());
@@ -42,7 +53,17 @@ public class ProductService implements ProductUseCase {
             .orElseThrow(() -> new ProductNotFoundException(id));
         
         if (!product.isValid()) {
-            throw new InvalidProductException("Product data is invalid");
+            StringBuilder errors = new StringBuilder("Product validation failed: ");
+            if (product.getName() == null || product.getName().trim().isEmpty()) {
+                errors.append("name is required; ");
+            }
+            if (product.getPrice() == null || product.getPrice().compareTo(BigDecimal.ZERO) < 0) {
+                errors.append("price must be non-negative; ");
+            }
+            if (product.getQuantity() == null || product.getQuantity() < 0) {
+                errors.append("quantity must be non-negative; ");
+            }
+            throw new InvalidProductException(errors.toString());
         }
         
         existingProduct.setName(product.getName());

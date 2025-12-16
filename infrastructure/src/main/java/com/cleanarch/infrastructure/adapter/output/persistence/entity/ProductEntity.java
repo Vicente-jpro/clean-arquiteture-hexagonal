@@ -41,8 +41,10 @@ public class ProductEntity {
     private String category;
     
     @Column(name = "created_at", nullable = false, updatable = false)
+    @org.hibernate.annotations.CreationTimestamp
     private LocalDateTime createdAt;
     
     @Column(name = "updated_at", nullable = false)
+    @org.hibernate.annotations.UpdateTimestamp
     private LocalDateTime updatedAt;
 }

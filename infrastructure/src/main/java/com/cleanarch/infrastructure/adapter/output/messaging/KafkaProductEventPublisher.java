@@ -46,6 +46,7 @@ public class KafkaProductEventPublisher implements ProductEventPublisher {
             log.info("Published event: {}", eventType);
         } catch (JsonProcessingException e) {
             log.error("Error publishing event: {}", eventType, e);
+            throw new RuntimeException("Failed to publish event: " + eventType, e);
         }
     }
     
