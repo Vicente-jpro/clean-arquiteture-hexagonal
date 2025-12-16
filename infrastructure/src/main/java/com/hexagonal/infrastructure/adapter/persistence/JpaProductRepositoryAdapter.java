@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * JPA implementation of the ProductRepository port.
@@ -37,7 +36,7 @@ public class JpaProductRepositoryAdapter implements ProductRepository {
     public List<Product> findAll() {
         return jpaRepository.findAll().stream()
                 .map(mapper::toDomain)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
@@ -54,6 +53,6 @@ public class JpaProductRepositoryAdapter implements ProductRepository {
     public List<Product> findByCategory(String category) {
         return jpaRepository.findByCategory(category).stream()
                 .map(mapper::toDomain)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

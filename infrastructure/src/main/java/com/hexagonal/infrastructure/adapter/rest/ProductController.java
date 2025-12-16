@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * REST Controller for Product operations.
@@ -58,7 +57,7 @@ public class ProductController {
         List<Product> products = productUseCase.getAllProducts();
         List<ProductResponseDto> response = products.stream()
                 .map(mapper::toResponse)
-                .collect(Collectors.toList());
+                .toList();
         return ResponseEntity.ok(response);
     }
 
@@ -76,7 +75,7 @@ public class ProductController {
         List<Product> products = productUseCase.getProductsByCategory(category);
         List<ProductResponseDto> response = products.stream()
                 .map(mapper::toResponse)
-                .collect(Collectors.toList());
+                .toList();
         return ResponseEntity.ok(response);
     }
 }

@@ -42,6 +42,8 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
+        # Note: This fully qualified class name is required by Kafka's JsonDeserializer
+        # If the package is refactored, this configuration must be updated accordingly
         spring.json.value.default.type: com.hexagonal.infrastructure.adapter.messaging.ProductEventDto
 
 # Server Configuration
