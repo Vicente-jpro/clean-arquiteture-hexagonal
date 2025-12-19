@@ -9,11 +9,10 @@
 	</parent> 
 
 	<artifactId>domain</artifactId>
+	
+	<!-- Domain depends on nothing - pure business logic -->
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
+		<!-- No module dependencies -->
 	</dependencies>
 
 </project>

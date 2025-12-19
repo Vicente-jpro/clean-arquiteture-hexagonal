@@ -1,13 +1,4 @@
 package com.food.ordering.system.domain;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class DomainApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(DomainApplication.class, args);
-	}
-
-}
+// Domain layer - Pure business logic
+// No framework dependencies

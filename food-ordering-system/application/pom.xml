@@ -10,10 +10,11 @@
 	
 	<artifactId>application</artifactId>
 
+	<!-- Application depends only on Domain -->
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<groupId>com.food.ordering.system</groupId>
+			<artifactId>domain</artifactId>
 		</dependency>
 	</dependencies>
 </project>

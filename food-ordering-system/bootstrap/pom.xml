@@ -8,10 +8,14 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent> 
 
-	<artifactId>infrastructure</artifactId>
-
-	<!-- Infrastructure depends on Application and Domain -->
+	<artifactId>bootstrap</artifactId>
+	
+	<!-- Bootstrap module wires everything together -->
 	<dependencies>
+		<dependency>
+			<groupId>com.food.ordering.system</groupId>
+			<artifactId>infrastructure</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.food.ordering.system</groupId>
 			<artifactId>application</artifactId>
@@ -30,5 +34,14 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

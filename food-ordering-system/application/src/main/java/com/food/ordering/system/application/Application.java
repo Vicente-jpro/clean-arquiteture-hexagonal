@@ -1,13 +1,4 @@
 package com.food.ordering.system.application;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class Application {
-
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
-
-}
+// Application layer - Use cases and application services
+// Depends only on domain layer

@@ -17,9 +17,10 @@
 	<description>Demo project for Spring Boot</description>
 
 	<modules>
-		<module>application</module>
 		<module>domain</module>
+		<module>application</module>
 		<module>infrastructure</module>
+		<module>bootstrap</module>
 	</modules>
 
 	<properties>
@@ -49,6 +50,11 @@
 			<dependency>
 				<groupId>com.food.ordering.system</groupId>
 				<artifactId>infrastructure</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.food.ordering.system</groupId>
+				<artifactId>bootstrap</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
