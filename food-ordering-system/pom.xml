@@ -2,23 +2,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.0.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 
-	<groupId>food.ordering.system</groupId>
+	<groupId>com.food.ordering.system</groupId>
 	<artifactId>food-ordering-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>food-ordering-system</name>
 	<description>Demo project for Spring Boot</description>
 
-	<packaging>pom</packaging>
+	<modules>
+		<module>application</module>
+		<module>domain</module>
+		<module>infrastructure</module>
+	</modules>
 
 	<properties>
 		<java.version>17</java.version>
 		<spring-boot.version>4.0.0</spring-boot.version>
 	</properties>
-
-	<dependencies>
-
-	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
@@ -30,13 +37,18 @@
 				<scope>import</scope>
 			</dependency>
 			<dependency>
-				<groupId>com.example</groupId>
-				<artifactId>module-a</artifactId>
+				<groupId>com.food.ordering.system</groupId>
+				<artifactId>application</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.example</groupId>
-				<artifactId>module-b</artifactId>
+				<groupId>com.food.ordering.system</groupId>
+				<artifactId>domain</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.food.ordering.system</groupId>
+				<artifactId>infrastructure</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
