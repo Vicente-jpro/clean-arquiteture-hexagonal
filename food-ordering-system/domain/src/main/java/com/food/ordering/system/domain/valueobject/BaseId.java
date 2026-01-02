@@ -2,6 +2,9 @@ package com.food.ordering.system.domain.valueobject;
 
 import java.util.Objects;
 
+import lombok.Getter;
+
+@Getter
 public abstract class BaseId<T> {
 	
 	private final T value;

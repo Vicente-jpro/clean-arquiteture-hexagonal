@@ -14,6 +14,7 @@ public class StreetAddress {
 	private String postalCode;
 	private String street;
 	
+	public StreetAddress() {}
 	
 	@Override
 	public int hashCode() {

@@ -14,10 +14,14 @@ import com.food.ordering.system.domain.valueobject.StreetAddress;
 import com.food.ordering.system.domain.valueobject.TrackingId;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+@Builder
+@AllArgsConstructor
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Order extends AggregateRoot<OrderId>{
@@ -102,22 +106,7 @@ public class Order extends AggregateRoot<OrderId>{
 			this.failureMessages = failureMessages;
 		}
 	}
-	/*
-	public static Order create(){
 
-		final var order = new Order();
-		order.orderId = new OrderId(UUID.randomUUID());
-		order.customerId = new CustomerId(UUID.randomUUID());
-		order.restaurantId = new RestaurantId(UUID.randomUUID());
-		order.streetAddress = new StreetAddress(UUID.randomUUID(), "123-234", "Luanda");
-		order.price = new Money(100.0);
-		order.trackingId = new TrackingId(UUID.randomUUID());
-		order.status = OrderStatus.PENDING;
-		order.items = List.of();
-		initializeOrderItems(order);
-		return order;
-	}
-*/
 	private static OrderItem initializeOrderItems(@NonNull final Order order) {
 		return OrderItem.create(order);
 	}

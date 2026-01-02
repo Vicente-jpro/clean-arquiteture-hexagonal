@@ -2,6 +2,7 @@ package com.food.ordering.system.domain.entities;
 
 import java.util.UUID;
 
+
 import com.food.ordering.system.domain.common.AggregateRoot;
 import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
@@ -10,10 +11,18 @@ import com.food.ordering.system.domain.valueobject.OrderItemId;
 import com.food.ordering.system.domain.valueobject.RestaurantId;
 import com.food.ordering.system.domain.valueobject.StreetAddress;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+
+
+@Builder
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderItem extends AggregateRoot<OrderItemId>{
 	
 	private OrderItemId id;
@@ -26,6 +35,8 @@ public class OrderItem extends AggregateRoot<OrderItemId>{
 	private CustomerId customerId;
 	private RestaurantId restaurantId;
 	private StreetAddress streetAddress;
+	
+	
 	
 	public static OrderItem create(@NonNull final Order order) {
 
