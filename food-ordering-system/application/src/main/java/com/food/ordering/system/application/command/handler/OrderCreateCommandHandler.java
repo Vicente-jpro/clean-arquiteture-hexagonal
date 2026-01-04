@@ -1,14 +1,11 @@
 package com.food.ordering.system.application.command.handler;
 
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.food.ordering.system.application.command.CreateOrderCommand;
 import com.food.ordering.system.application.dto.CreateOrderResponse;
 import com.food.ordering.system.application.helper.OrderCreateHelper;
 import com.food.ordering.system.application.mapper.OrderDataMapper;
-import com.food.ordering.system.domain.entities.Order;
-import com.food.ordering.system.domain.entities.Restaurant;
 import com.food.ordering.system.domain.events.OrderCreatedEvent;
 
 import lombok.RequiredArgsConstructor;
