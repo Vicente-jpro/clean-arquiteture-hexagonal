@@ -3,6 +3,7 @@ package com.food.ordering.system.application.command.handler;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import com.food.ordering.system.application.mapper.OrderDataMapper;
 import com.food.ordering.system.application.ports.output.CustomerRepository;
 import com.food.ordering.system.application.ports.output.OrderRepository;
 import com.food.ordering.system.application.ports.output.RestaurantRepository;
+import com.food.ordering.system.application.publisher.ApplicationDomainEventPublisher;
 import com.food.ordering.system.domain.entities.Customer;
 import com.food.ordering.system.domain.entities.Order;
 import com.food.ordering.system.domain.entities.Restaurant;
@@ -37,6 +39,7 @@ public class OrderCreateCommandHandler {
 	
 	private final OrderDataMapper orderDataMapper;
 	
+	private final ApplicationDomainEventPublisher applicationDomainEventPublisher; 
 	
 	@Transactional
 	public CreateOrderResponse createOrder(CreateOrderCommand createOrderCommand) {
@@ -50,6 +53,8 @@ public class OrderCreateCommandHandler {
 		Order orderResult = saveOrder(order);
 		
 		log.info("Order is created with id: {}", orderResult.getId().getValue());
+		
+		applicationDomainEventPublisher.publisher(orderCreatedEvent);
 		
 		return orderDataMapper.orderToCreateOrderResponse(orderResult);
 	}
