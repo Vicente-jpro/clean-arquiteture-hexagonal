@@ -2,6 +2,9 @@ package com.food.ordering.system.domain.common;
 
 import java.util.Objects;
 
+import lombok.ToString;
+
+@ToString
 public abstract class BaseEntity<ID> {
     private ID id;
 
