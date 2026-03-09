@@ -85,4 +85,12 @@ public class OrderDataMapper {
 				order.getStatus(), 
 				"");
 	}
+	
+	public com.food.ordering.system.application.dto.track.TrackOrderResponse orderToTrackOrderResponse(Order order) {
+		
+		return new com.food.ordering.system.application.dto.track.TrackOrderResponse(
+				order.getTrackingId().getValue(), 
+				order.getStatus(), 
+				order.getFailureMessages());
+	}
 }

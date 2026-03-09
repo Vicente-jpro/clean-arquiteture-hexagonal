@@ -27,7 +27,7 @@ public class OrderDomainServiceImpl implements OrderDomainService{
 	}
 	
 	private void validateRestaurant(Restaurant restaurant) {
-		if (!restaurant.isActivate()) {
+		if (!restaurant.isActive()) {
 			throw new IllegalStateException("Restaurant with id " + restaurant.getId() + " is not active!");
 		}
 	}

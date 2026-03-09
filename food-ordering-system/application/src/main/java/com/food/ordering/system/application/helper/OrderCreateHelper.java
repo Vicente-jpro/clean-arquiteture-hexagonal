@@ -10,6 +10,7 @@ import com.food.ordering.system.application.command.CreateOrderCommand;
 import com.food.ordering.system.application.mapper.OrderDataMapper;
 import com.food.ordering.system.application.ports.output.CustomerRepository;
 import com.food.ordering.system.application.ports.output.OrderRepository;
+import com.food.ordering.system.application.ports.output.RestaurantRepository;
 import com.food.ordering.system.domain.entities.Customer;
 import com.food.ordering.system.domain.entities.Order;
 import com.food.ordering.system.domain.entities.Restaurant;
@@ -32,6 +33,8 @@ public class OrderCreateHelper {
 	private final CustomerRepository customerRepository;
 	
 	private final OrderDataMapper orderDataMapper;
+
+	private final RestaurantRepository restauranteRepository;
 	
 	@Transactional
 	public OrderCreatedEvent persistOrder(CreateOrderCommand createOrderCommand) {
