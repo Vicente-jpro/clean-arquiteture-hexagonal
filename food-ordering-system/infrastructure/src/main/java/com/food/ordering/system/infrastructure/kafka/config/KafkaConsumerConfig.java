@@ -5,13 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.avro.specific.SpecificRecordBase;
-import org.apache.kafka.clients.producer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
+import org.springframework.kafka.config.KafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
-import org.springframework.kafka.core.DefaultKafkaProducerFactory;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 
 @Configuration
 public class KafkaConsumerConfig<K extends Serializable, V extends SpecificRecordBase> {
@@ -55,7 +56,7 @@ public class KafkaConsumerConfig<K extends Serializable, V extends SpecificRecor
 
 	@Bean
 	public ConsumerFactory<K, V> consumerFactory(){
-		return new DefaultKafkaProducerFactory<>(ConsumerConfig());
+		return new DefaultKafkaConsumerFactory<>(consumerConfig());
 	}
 
 	@Bean

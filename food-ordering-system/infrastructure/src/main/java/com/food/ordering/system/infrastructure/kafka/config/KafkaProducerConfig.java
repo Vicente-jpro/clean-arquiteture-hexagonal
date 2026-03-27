@@ -12,26 +12,20 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
-@Configuration
-public class kafkaProducerConfig<K extends Serializable, V extends SpecificRecordBase> {
-	
-	private KafkaConfigData kafkaConfigData;
-	
-	private KafkaProducerConfigData kafkaProducerConfigData;
-	
-	public kafkaProducerConfig(
-			KafkaConfigData kafkaConfigData, 
-			KafkaProducerConfigData kafkaProducerConfigData
-			) {
-		
-		this.kafkaConfigData = kafkaConfigData;
-		this.kafkaProducerConfigData = kafkaProducerConfigData;
-	}
+import lombok.RequiredArgsConstructor;
 
+@Configuration
+@RequiredArgsConstructor
+public class KafkaProducerConfig<K extends Serializable, V extends SpecificRecordBase> {
+	
+	private final KafkaConfigData kafkaConfigData;
+	
+	private final KafkaProducerConfigData kafkaProducerConfigData;
+	
 	
 	@Bean
 	public Map<String, Object> producerConfig(){
-		 Map<String, Object> props = new HashMap<>();
+		Map<String, Object> props = new HashMap<>();
 		
 		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaConfigData.getBootstrapServers());
 
@@ -69,3 +63,4 @@ public class kafkaProducerConfig<K extends Serializable, V extends SpecificRecor
 
 
 }
+
